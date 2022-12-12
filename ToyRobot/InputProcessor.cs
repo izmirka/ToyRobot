@@ -20,25 +20,32 @@ public class InputProcessor
             return result;
         }
 
+        result.Command = command;
+
         if (command == Command.PLACE)
         {
-            if (splitInputs.Length != 4
-                || !int.TryParse(splitInputs[1], out var x)
-                || !int.TryParse(splitInputs[2], out var y)
-                || !Enum.TryParse<Direction>(splitInputs[3], ignoreCase: true, out var direction))
-            {
-                result.ValidationMessage = "Invalid command format";
-                return result;
-            }
-            else
-            {
-                result.Direction = direction;
-                result.Position = new Position(x, y);
-            }
+            return ValidatePlaceCommand(splitInputs, result);
         }
 
-        result.Command = command;
         result.IsValid = true;
+        return result;
+    }
+
+    private ProcessedInput ValidatePlaceCommand(string[] input, ProcessedInput result)
+    {
+        if (input.Length != 4
+                || !int.TryParse(input[1], out var x)
+                || !int.TryParse(input[2], out var y)
+                || !Enum.TryParse<Direction>(input[3], ignoreCase: true, out var direction))
+        {
+            result.ValidationMessage = "Invalid command format";
+        }
+        else
+        {
+            result.Direction = direction;
+            result.Position = new Position(x, y);
+            result.IsValid = true;
+        }
         return result;
     }
 }
