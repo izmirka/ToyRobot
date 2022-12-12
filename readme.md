@@ -37,13 +37,12 @@ Output: 3,3,NORTH
 
 ## Requirements
 
-Requires Visual Studio Code or Visual Studio.<br />
 Requires .NET 7<br />
 
 ## Usage
 
 In command line navigate to ToyRobot/ToyRobot, type 'dotnet run' and start typing commands e.g. 'place 0,0,north', 'report'<br />
-To run tests navigate to ToyRobot/Test and type 'dotnet test'
+To run tests navigate to ToyRobot/ToyRobotTest and type 'dotnet test'
 
 
 
