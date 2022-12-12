@@ -1,10 +1,11 @@
-public class Controller
+public class CommandController
 {
-    private readonly CommandFactory _commandFactory;
+    private readonly ICommandFactory _commandFactory;
 
-    public Controller()
+    public CommandController(ICommandFactory factory)
     {
-        _commandFactory = new();
+        ArgumentNullException.ThrowIfNull(factory);
+        _commandFactory = factory;
     }
 
     public void HandleCommand(ProcessedInput input)

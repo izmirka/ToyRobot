@@ -1,4 +1,4 @@
-public class CommandFactory
+public class CommandFactory : ICommandFactory
 {
     public ICommand CreateCommand(ProcessedInput input)
     {

@@ -1,11 +1,11 @@
 ﻿InputProcessor processor = new();
-Controller controller = new();
+CommandFactory factory = new();
+CommandController controller = new(factory);
 
 while (true)
 {
     var input = Console.ReadLine();
 
-    //process input
     var processedInput = processor.Process(input);
     if (!processedInput.IsValid)
     {
@@ -13,6 +13,5 @@ while (true)
         continue;
     }
 
-    //execute command
     controller.HandleCommand(processedInput);
 }
